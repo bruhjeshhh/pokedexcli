@@ -9,7 +9,10 @@ import (
 
 func main() {
 	reader := bufio.NewScanner(os.Stdin)
-
+	url := "https://pokeapi.co/api/v2/location-area"
+	urlHolder := config{
+		nextUrl: &url,
+	}
 	for true {
 		fmt.Print("Pokedex >")
 		reader.Scan()
@@ -19,7 +22,7 @@ func main() {
 		if ok == false {
 			fmt.Println("Unknown command")
 		} else {
-			_ = value.callback()
+			_ = value.callback(&urlHolder)
 
 		}
 	}
