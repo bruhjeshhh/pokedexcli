@@ -7,6 +7,25 @@ import (
 	"strings"
 )
 
+type cliCommand struct {
+	name        string
+	description string
+	callback    func() error
+}
+
+var naksha = map[string]cliCommand{
+	"exit": {
+		name:        "exit",
+		description: "Exit the Pokedex",
+		callback:    commandExit,
+	},
+	"help": {
+		name:        "help",
+		description: "Provide help to the user",
+		callback:    sendHelp,
+	},
+}
+
 func cleanInput(text string) []string {
 	// var opt []string
 
