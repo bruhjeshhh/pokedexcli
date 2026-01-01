@@ -4,13 +4,13 @@ import (
 	"errors"
 	"fmt"
 	"os"
-	"strings"
+	// "strings"
 )
 
 type cliCommand struct {
 	name        string
 	description string
-	callback    func(*config) error
+	callback    func(*config, string) error
 }
 
 var naksha = map[string]cliCommand{
@@ -34,25 +34,30 @@ var naksha = map[string]cliCommand{
 		description: "Provide  previous map to the user",
 		callback:    prevMap,
 	},
+	"explore": {
+		name:        "explore",
+		description: "Provides all pokemons found in that area",
+		callback:    show_encounters,
+	},
 }
 
-func cleanInput(text string) []string {
-	// var opt []string
+// func cleanInput(text string) []string {
+// 	// var opt []string
 
-	words := strings.Fields(text)
+// 	words := strings.Fields(text)
 
-	return words
+// 	return words
 
-}
+// }
 
-func commandExit(url *config) error {
+func commandExit(url *config, loci string) error {
 	fmt.Println("Closing the Pokedex... Goodbye!")
 	os.Exit(0)
 	return errors.New("exit")
 
 }
 
-func sendHelp(url *config) error {
+func sendHelp(url *config, loci string) error {
 	fmt.Println("Welcome to the Pokedex!\nUsage:\nhelp: Displays a help message\nexit: Exit the Pokedex")
 	return errors.New("exit")
 }

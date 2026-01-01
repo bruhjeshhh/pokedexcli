@@ -21,7 +21,7 @@ type config struct {
 	prevUrl *string
 }
 
-func showMap(cfg *config) error {
+func showMap(cfg *config, loci string) error {
 	url := *cfg.nextUrl
 	req, _ := http.Get(url)
 
@@ -40,7 +40,7 @@ func showMap(cfg *config) error {
 
 }
 
-func prevMap(cfg *config) error {
+func prevMap(cfg *config, loci string) error {
 	url := *cfg.prevUrl
 	req, _ := http.Get(url)
 
