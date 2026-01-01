@@ -39,6 +39,11 @@ var naksha = map[string]cliCommand{
 		description: "Provides all pokemons found in that area",
 		callback:    show_encounters,
 	},
+	"catch": {
+		name:        "explore",
+		description: "Provides all pokemons found in that area",
+		callback:    catchPoke,
+	},
 }
 
 // func cleanInput(text string) []string {
